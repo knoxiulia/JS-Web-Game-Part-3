@@ -1,12 +1,33 @@
-function newImage(url, left, bottom){
+function newImage(url){
     let image = document.createElement('img')
     image.src = url
-    image.style.position = 'fixed'
-    image.style.left = left + 'px'
-    image.style.bottom = bottom + 'px'
     document.body.append(image)
     return image
 }
+
+function move(image) {
+    image.style.position = 'fixed'
+
+    function moveToCoordinates(left,bottom) {
+        image.style.left = left + 'px'
+        image.style.bottom = bottom + 'px'
+    }
+    return {
+        to: moveToCoordinates
+    }
+}
+
+move(newImage('assets/green-character.gif')).to(100, 250)
+move(newImage('assets/tree.png')).to(300, 150)
+move(newImage('assets/pillar.png')).to(500, 350)
+move(newImage('assets/pine-tree.png')).to(70, 500)
+move(newImage('assets/crate.png')).to(600, 550)
+move(newImage('assets/well.png')).to(720, 600)
+
+
+let thingThatMoveReturns = move(greenCharacter)
+thingThatMoveReturns.to
+thingThatMoveReturns.to (300, 300)
 
 newImage('assets/green-character.gif', 100, 250)
 newImage('assets/tree.png', 200, 450)
